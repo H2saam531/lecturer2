@@ -10,7 +10,8 @@ import Exams from "./Exams";
     return [{ id: '1' }, { id: '2' }, { id: '3' }]
   }
 // const Fetch = ( { params }) => {
-export default function Page( { params }: { params: {id: string}}) {
+//export default function Page( { params }: { params: {id: string}}) {
+export default function Page( { params }) {
   // console.log(params)
   return (
 
