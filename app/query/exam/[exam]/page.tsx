@@ -13,7 +13,8 @@ import Exams from "./Exams";
 export default function Page( { params }: { params: {id: string}}) {
   // console.log(params)
   return (
-  <Exams id={params} />
+
+  <h1>text</h1>
 )
 }
     
