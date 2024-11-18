@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 
+import Link from 'next/link';
 
 interface Getname{
   name: string
@@ -117,10 +118,10 @@ const corse_lest: Getname[] = dataUser;
                     <div className='ml-4 flex items-center space-x-4 '>
         {/* className={errors.dateStart && touched.dateStart ? "input-error" : "text-sm w-screen" } */}
 
-                        <a href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</a>
-                        <a href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</a>
-                        <a href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>{corse_lest.map((post) => post.name)}</a>
-                        <a href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</a>
+                        <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</Link>
+                        <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</Link>
+                        <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>{corse_lest.map((post) => post.name)}</Link>
+                        <Link href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</Link>
                         <button className={reqpo != 200 ? "invisible" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '} 
                         onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus");localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
                         
