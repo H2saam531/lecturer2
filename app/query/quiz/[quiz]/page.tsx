@@ -1,5 +1,6 @@
 import React from "react";
 import Quizs from "./Quizs";
+import "./globals.css";
 
 export async function generateStaticParams() {
   const url = "https://secend-pr.shuttleapp.rs/todos";

@@ -1,6 +1,7 @@
 "use client";
 
 import { KeyboardEvent, useState , useEffect, useRef} from "react";
+import "./globals.css";
 
 
 import { useRouter } from 'next/navigation'

@@ -5,6 +5,8 @@
 // import Link from "next/link";
 import React from "react";
 import Exams from "./Exams";
+import "./globals.css";
+
 
 export async function generateStaticParams() {
 const url = "https://secend-pr.shuttleapp.rs/todos";

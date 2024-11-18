@@ -4,6 +4,8 @@
 // import { useFormik } from "formik";
 // import { basicSchema, loginSchema } from "../schemas";
 import App from "./App";
+import "./globals.css";
+
 
 
 // interface Corse_lest{

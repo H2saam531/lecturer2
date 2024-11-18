@@ -2,7 +2,9 @@
 
 // import { KeyboardEvent, useState , useEffect, useRef} from "react";
 // import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App"
+import "./globals.css";
+;
 
 interface Corse_lest{
     massage: string

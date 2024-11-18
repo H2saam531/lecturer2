@@ -1,5 +1,6 @@
 import React from "react";
 import Sheets from "./Sheets";
+import "./globals.css";
 
 export async function generateStaticParams() {
   const url = "https://secend-pr.shuttleapp.rs/todos";
