@@ -401,7 +401,7 @@ const getStatus = async () => {
     fetchDataNormel()
   }
           
-  }, []);
+  }, [id]);
   const corse_lest: researc_list[] = resqst;
   const get_status: GetStatus[] = status;
   let fLen = get_status.length;
