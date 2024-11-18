@@ -222,9 +222,9 @@ const corse_lest: Getname[] = dataUser;
 
           )}</button>
 
-          <a href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</a>
-          <a href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</a>
-          <a href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</a>
+          <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</Link>
+          <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</Link>
+          <Link href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</Link>
           <button className={reqpo != 200 ? "invisible" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}
            onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
                       </main>

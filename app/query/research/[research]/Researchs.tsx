@@ -1,13 +1,13 @@
 "use client";
 
-import CustomSelect from "@/app/components/Customs/CustomSelect";
+import CustomSelect from "@/app/components/Customs/CustomSelectR";
 import { Form, Formik } from "formik";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import React from "react";
 import { useState, useEffect } from 'react';
 import { toast, Toaster } from "sonner";
 import * as yup from "yup";
+import CustomCheckBox from "../../CustomInput";
 
 
 
@@ -24,28 +24,28 @@ import * as yup from "yup";
 //   }
 
 interface researc_list{
-  exam_comment: string
-  exam_dateOfappointed: string
-  exam_deliveryDate: string
-  exam_discussion: number
-  exam_id: number
-  exam_idcf: number
-  exam_iduf: number
-  exam_maximumNumberOfGroup: number
-  exam_minimumNumberOfGroup: number
-  exam_name: string
+  research_comment: string
+  research_dateOfappointed: string
+  research_deliveryDate: string
+  research_discussion: number
+  research_id: number
+  research_idcf: number
+  research_iduf: number
+  research_maximumNumberOfGroup: number
+  research_minimumNumberOfGroup: number
+  research_name: string
   status: string
-}
+  }
+  
 interface GetStatus{
   id: number
   status: number
   }
-
-  // export function generateStaticParams() {
-  //   return [{ id: '1' }, { id: '2' }, { id: '3' }]
-  // }
+//   export function generateStaticParams() {
+//     return [{ id: '1' }, { id: '2' }, { id: '3' }]
+//   }
 const Fetch = ( id ) => {
-  // const { id } = await params
+//   const { id } = await params
   const [resqst, setPhotos] = useState([]);
   const [status, setGetStatus] = useState([]);
   const [error, setError] = useState();
@@ -55,16 +55,6 @@ const Fetch = ( id ) => {
   const [tokenstatus, setToken] = useState<Number>();
   const [isDisabled, setIsDisabled] = useState(false);
   const url = "https://secend-pr.shuttleapp.rs/todos";
-  const params2 = useParams()
-  const [prId, setPrid] = useState();
-  setPrid(id.id.exam);
-
-  // console.log(id.id.exam)
-  // const { exam } = id;
-  // console.log(exam)
-  // const ticket = ticket[id];
-  // const [status2, setStatus] = useState(ticket.status);
-
 
   // const [check2, setChek2] = useState(false);
   // const handleClick2 = () => setChek2(!check2)
@@ -74,13 +64,12 @@ const Fetch = ( id ) => {
     let auth = localStorage.getItem("Authorization")
     if (auth != null){
   
-    const reqponse = await fetch(`${url}/add-status-exam`,{
+    const reqponse = await fetch(`${url}/add-status-research`,{
       method: "POST",
       body: JSON.stringify({
         // "type_of_element": Object.keys(params)[0],
-        // "status_idcf": parseInt(params.exam),
-        "status_idcf": parseInt(id.id.exam),
-        // "status_idcf": exam,
+        // "status_idcf": parseInt(params.research),
+        "status_idcf": parseInt(id.research),
         "status_idrf": parseInt(values.couseType),
         // "status_iduf": parseInt(values.couseType),
         "status_status": values.statusType
@@ -104,6 +93,10 @@ const Fetch = ( id ) => {
     // });
     // toast.play({ id: "123" });
       if(data == 200){
+        // corse_lest[parseInt(values.couseType)].status = '1';
+        // corse_lest[parseInt(values.couseType)].research_name = 'لاشي';
+        // console.log(parseInt(values.couseType))
+        // console.log(values.couseType)
         toast.success("تمت اضافتة ");
   
       }
@@ -133,130 +126,129 @@ const Fetch = ( id ) => {
   
     
   };
-const DeleteData = async (localid: any, arrayid: any) => {
-  // if (auth != null){
-    // onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
+  const DeleteData = async (localid: any, arrayid: any) => {
+    // if (auth != null){
+      // onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
 
-  let auth = localStorage.getItem("Authorization")
-  setIsDisabled(true)
-  if (auth != null){
-    if(confirm("هل انت متأكد من حذف العنصر")){
+    let auth = localStorage.getItem("Authorization")
+    setIsDisabled(true)
+    if (auth != null){
+      if(confirm("هل انت متأكد من حذف العنصر")){
 // console.log("OK")
-      await fetch(`${url}/deleteExam`,{
-        // method: "DELETE",
-        method: "POST",
-        body: JSON.stringify({
-          "id": parseInt(localid)
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          'Authorization': auth
-        }
-      })
-        .then((res) => {
-          // getStates(res.status);
-          return res.json();
+        await fetch(`${url}/deleteResearch`,{
+          // method: "DELETE",
+          method: "POST",
+          body: JSON.stringify({
+            "id": parseInt(localid)
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            'Authorization': auth
+          }
         })
-        .then((data) => {
-          console.log(data.message);
-          
-          if(data.message == "Couldn't delete the element."){
-            // setEmpathy("empathy");
-            toast.error("من اضاف العنصر يستطيع حذفه.");
-          }
-          else if( data.message == "Deleted the element."){
-            corse_lest.splice(arrayid, 1);
-            toast.success("تم حذف العنصر");
+          .then((res) => {
+            getStates(res.status);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data.message);
             
-          }
-          return data
-        }).catch((error) => {
-          // setError(error);
-          console.log(error)
-        });
-    }else{
+            if(data.message == "Couldn't delete the element."){
+              // setEmpathy("empathy");
+              toast.error("من اضاف العنصر يستطيع حذفه.");
+            }
+            else if( data.message == "Deleted the element."){
+              corse_lest.splice(arrayid, 1);
+              toast.success("تم حذف العنصر");
+              
+            }
+            return data
+          }).catch((error) => {
+            // setError(error);
+            console.log(error)
+          });
+      }else{
 
-      // console.log("NO")
-    }
-    
-
-        
+        // console.log("NO")
+      }
       
-      // alert(id.target.value)
-      // console.log(id.target.value)
+
+         
+        
+        // alert(id.target.value)
+        // console.log(id.target.value)
+      }
+      setIsDisabled(false)
     }
-    setIsDisabled(false)
-  }
-const UpdateData = async (localid: any, arrayid: any) => {
-  // if (auth != null){
-    // onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
+  const UpdateData = async (localid: any, arrayid: any) => {
+    // if (auth != null){
+      // onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
 
-  // let auth = localStorage.getItem("Authorization")
-  // setIsDisabled(true)
-  // if (auth != null){
-  //   if(confirm("هل انت متأكد من حذف العنصر")){
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
-  // console.log("message")
-  // // console.log(id.target.value)
-  // // console.log(id.target.id.target['data-id'])
-  // corse_lest.splice(arrayid, 1);
-  // console.log(localid)
-  // // console.log(id2)
+    // let auth = localStorage.getItem("Authorization")
+    // setIsDisabled(true)
+    // if (auth != null){
+    //   if(confirm("هل انت متأكد من حذف العنصر")){
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+    // console.log("message")
+    // // console.log(id.target.value)
+    // // console.log(id.target.id.target['data-id'])
+    // corse_lest.splice(arrayid, 1);
+    // console.log(localid)
+    // // console.log(id2)
 
-  toast.error("في الاصدار القادم");
-  // console.log(arrayid)
+    toast.error("في الاصدار القادم");
+    // console.log(arrayid)
 
 // console.log("OK")
-      // await fetch(`http://192.168.0.102:8070/deleteResearch`,{
-      //   // method: "DELETE",
-      //   method: "POST",
-      //   body: JSON.stringify({
-      //     "id": parseInt(id.target.value)
-      //   }),
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      //     'Authorization': auth
-      //   }
-      // })
-      //   .then((res) => {
-      //     getStates(res.status);
-      //     return res.json();
-      //   })
-      //   .then((data) => {
-      //     console.log(data.message);
-          
-      //     if(data.message == "Couldn't delete the element."){
-      //       // setEmpathy("empathy");
-      //       toast.error("من اضاف العنصر يستطيع حذفه.");
-      //     }
-      //     else if( data.message == "Deleted the element."){
-      //       toast.success("تم حذف العنصر");
+        // await fetch(`http://192.168.0.102:8070/deleteResearch`,{
+        //   // method: "DELETE",
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     "id": parseInt(id.target.value)
+        //   }),
+        //   headers: {
+        //     "Content-type": "application/json; charset=UTF-8",
+        //     'Authorization': auth
+        //   }
+        // })
+        //   .then((res) => {
+        //     getStates(res.status);
+        //     return res.json();
+        //   })
+        //   .then((data) => {
+        //     console.log(data.message);
             
-      //     }
-      //     return data
-      //   }).catch((error) => {
-      //     // setError(error);
-      //     console.log(error)
-    //   //   });
-    // }
-    // // else{
+        //     if(data.message == "Couldn't delete the element."){
+        //       // setEmpathy("empathy");
+        //       toast.error("من اضاف العنصر يستطيع حذفه.");
+        //     }
+        //     else if( data.message == "Deleted the element."){
+        //       toast.success("تم حذف العنصر");
+              
+        //     }
+        //     return data
+        //   }).catch((error) => {
+        //     // setError(error);
+        //     console.log(error)
+      //   //   });
+      // }
+      // // else{
 
-    // // }
-    // }
-    // setIsDisabled(false)
-  }
+      // // }
+      // }
+      // setIsDisabled(false)
+    }
   
-  // useEffect(() => {
+  useEffect(() => {
 
-    let auth = localStorage.getItem("Authorization");
   
-const fetchData = async () => {
+  const fetchData = async () => {
+  let auth = localStorage.getItem("Authorization");
   toast.error("Error 400");
     if (auth != null){
       toast.error("Error 400");
-        // fetch(`${url}/examAu/${params.exam}`,{
-        // fetch(`${url}/examAu/${id.id.exam}`,{
-        fetch(`${url}/examAu/${prId}`,{
+        // fetch(`${url}/researchingAu/${params.research}`,{
+        fetch(`${url}/researchingAu/${id.research}`,{
           method: "GET",
         
           headers: {
@@ -271,7 +263,9 @@ const fetchData = async () => {
           })
           .then((data) => {
             // console.log(data);
+            
             if(data == "empathy"){
+              // console.log("3")
               setEmpathy("empathy");
             }else{
               setPhotos(data);
@@ -283,22 +277,22 @@ const fetchData = async () => {
     }
   }
 const getStatus = async () => {
-  toast.error("Error 400");
+  let auth = localStorage.getItem("Authorization");
+
+  // toast.error("Error 400");
     if (auth != null){
-      toast.error("Error 400");
-        fetch(`${url}/exam-get-status`,{
+      // toast.error("Error 400");
+        fetch(`${url}/research-get-status`,{
           method: "POST",
           body: JSON.stringify({
-            // "courseid": parseInt(params.exam),
-            // "courseid": parseInt(id.id.exam),
-            "courseid": prId,
-            // "courseid": exam,
+            // "courseid": parseInt(params.research),
+            "courseid": parseInt(id.research),
           }),
         
           headers: {
             'Content-type': 'application/json',
             'Authorization': auth
-            
+           
           },
         })
           .then((res) => {
@@ -307,7 +301,9 @@ const getStatus = async () => {
           })
           .then((data) => {
             // console.log(data);
+            
             if(data == "empathy"){
+              // console.log("2")
               // setEmpathy("empathy");
             }else{
               setGetStatus(data);
@@ -315,14 +311,16 @@ const getStatus = async () => {
           }).catch((error) => {
             setError(error);
             console.log(error)
-          });
+         });
     }
   }
+  
 const fetchDataNormel = async () => {
+  let auth = localStorage.getItem("Authorization");
+
 // if (auth != null){
-    // fetch(`${url}/exam/${params.exam}`,{
-    // fetch(`${url}/exam/${id.id.exam}`,{
-    fetch(`${url}/exam/${prId}`,{
+    // fetch(`${url}/researching/${params.research}`,{
+    fetch(`${url}/researching/${id.research}`,{
       method: "GET",
     })
       .then((res) => {
@@ -330,7 +328,6 @@ const fetchDataNormel = async () => {
         return res.json();
       })
       .then((data) => {
-        // console.log(data);
         if(data == "empathy"){
           setEmpathy("empathy");
         }else{
@@ -342,6 +339,8 @@ const fetchDataNormel = async () => {
       });
     // }
   }
+  let auth = localStorage.getItem("Authorization");
+
 
 if(auth != null){
   const fatching = async () => {
@@ -370,34 +369,36 @@ if(auth != null){
   // console.log(await reqponse);
   let ts = await reqponse;
   if(ts == 200){
-    fetchData()
+    fetchData();
     getStatus();
   }else{
-    // console.log(reqponse);
 
     fetchDataNormel()
   }
   }
   fatching();
 }else{
-  // console.log(3);
 
   fetchDataNormel()
 }
         
-// }, []);
-const corse_lest: researc_list[] = resqst;
-const get_status: GetStatus[] = status;
-let fLen = get_status.length;
-let cLen = corse_lest.length;
-for (let j = 0; j < cLen; j++) {
-  for (let i = 0; i < fLen; i++) {
-  if(get_status[i].id == corse_lest[j].exam_id){
-    corse_lest[j].status = "1"
+}, []);
+  const corse_lest: researc_list[] = resqst;
+  const get_status: GetStatus[] = status;
+  let fLen = get_status.length;
+  let cLen = corse_lest.length;
+  for (let j = 0; j < cLen; j++) {
+    for (let i = 0; i < fLen; i++) {
+    if(get_status[i].id == corse_lest[j].research_id){
+      if(get_status[i].status != 0){
+        corse_lest[j].status = "1"
 
-  }}
-}
-    const t  = true;
+      }
+
+    }}
+  }
+      const t  = true;
+      // console.log(empathy);
 
   if( req_states == 401){
     return (
@@ -417,7 +418,9 @@ for (let j = 0; j < cLen; j++) {
     );
 
   }else{
-    if(empathy != "empathy"){
+
+
+if(empathy != "empathy"){
 
   const isNull = !corse_lest.filter(Boolean).length
 
@@ -443,8 +446,8 @@ for (let j = 0; j < cLen; j++) {
     }
   }else{
     const advancedSchema = yup.object().shape({
-      couseType: yup.string().oneOf(corse_lest.map(op => (op.exam_id.toString() )),"String").required("Required"),
-      statusType: yup.string().oneOf(["null", "1"],"String").required("Required"),
+      couseType: yup.string().oneOf(corse_lest.map(op => (op.research_id.toString() )),"String").required("Required"),
+      statusType: yup.string().oneOf(["0", "1"],"String").required("Required"),
   });
     // console.log(check);
 
@@ -468,7 +471,7 @@ for (let j = 0; j < cLen; j++) {
              
               <option value={""}>اختر المادة</option>
               {corse_lest.map(option => (
-                <option value={option.exam_id} key={option.exam_id}>{option.exam_name}</option>
+                <option value={option.research_id} key={option.research_id}>{option.research_name}</option>
               ))}
 
             </CustomSelect>
@@ -511,7 +514,7 @@ for (let j = 0; j < cLen; j++) {
           {/* {corse_lest.filter((item) =>{ */}
           {corse_lest.filter(
             
-            (d) => {if(check == true){ return new Date(d.exam_deliveryDate).valueOf() - new Date().valueOf() > 0}
+            (d) => {if(check == true){ return new Date(d.research_deliveryDate).valueOf() - new Date().valueOf() > 0}
           else{
             return d
           }
@@ -531,47 +534,39 @@ for (let j = 0; j < cLen; j++) {
           // .sort(function(a, b){if(check2 == true){return b.valueOf() - a.valueOf()} else{return b.valueOf() - a.valueOf()}})
           .map((post, index) => {
 
-  return (
-  // <div className="layer border rounded-md bg-cyan-500 shadow-lg shadow-cyan-500/50 px-9 py-8 w-full text-center" key={post.research_id}>
-  <div className="layer relative flax flax-row rounded-md shadow-xl w-full " key={post.exam_id}>
-  <div className="layer border relative flax flax-row rounded-md shadow-2xl px-9 w-full " >
-  {/* <div className="" key={post.research_id}>  */}
-    <span className="text-right"><h1>#{index + 1}</h1></span>
-    {/* <h1 className="float-left bg-green-800 inline w-5 h-5 absolute left-4 top-4 rounded-full ">
-      <h2 className="checkRight"></h2></h1> */}
-    {!post.status ? "": <h1 className="float-left bg-green-800 inline w-4 h-4 md:w-5 md:h-5 absolute left-4 top-4 rounded-full text-center">&#10003;</h1>}
-    <span className="basis-1/4"><h2>اسم البحث :         <div className="underline font-semibold decoration-solid inline">{post.exam_name.toString()}</div></h2></span>  
-    
-      <span><h2>اسم الامتحان :         {post.exam_name.toString()}</h2></span>  
-      <span><h2>تاريخ التحديد :     {post.exam_dateOfappointed}</h2></span>  
-      <span><h2>تاريخ التسليم  :    {post.exam_deliveryDate}</h2></span>  
-      <span><h2>اقل عدد للمجموعة :  {post.exam_minimumNumberOfGroup}</h2></span>  
-      <span><h2>اكبر عدد للمجموعة : {post.exam_maximumNumberOfGroup}</h2></span>  
-      {/* <span><h1>#{index + 1}</h1></span>
-      <span><h2>اسم البحث :         {post.name.toString()}</h2></span>  
-      <span><h2>تاريخ التحديد :     {post.dateOfappointed}</h2></span>  
-      <span><h2>تاريخ التسليم  :    {post.deliveryDate}</h2></span>  
-      <span><h2>اقل عدد للمجموعة :  {post.minimumNumberOfGroup}</h2></span>  
-      <span><h2>اكبر عدد للمجموعة : {post.maximumNumberOfGroup}</h2></span>   */}
-      {/* <button className="button"> <Link href="/dashboard"></Link>Dashboard</button> */}
+          return (
+          // <div className="layer border rounded-md bg-cyan-500 shadow-lg shadow-cyan-500/50 px-9 py-8 w-full text-center" key={post.research_id}>
+          <div className="layer relative flax flax-row rounded-md shadow-xl w-full " key={post.research_id}>
 
-    
-  </div>
-  <div className="grid grid-rows-2 grid-flow-col rounded-b-md border border-t-0 ">
-    <button 
-    className='rounded-br-md bg-stone-400 inline row-span-3 box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-sm justify-center leading-[1em]  px-[12px] py-[10px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-base' 
-    value={post.exam_id}  onClick={() => UpdateData(post.exam_id, index)} data-id={index} disabled={isDisabled}>update</button>
-    <button 
-    className='rounded-bl-md bg-red-500 inline row-span-3 box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-sm justify-center leading-[1em]  px-[12px] py-[10px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-base' 
-    value={post.exam_id} onClick={() => DeleteData(post.exam_id, index)} data-id={index} disabled={isDisabled}>deleate</button>
-  </div> 
-  </div>
-    )
-  })}
+          
+          <div className="layer border border-b-0 relative flax flax-row rounded-t-md px-9 w-full " >
+          {/* <div className="" key={post.research_id}>  */}
+            <span className="text-right"><h1>#{index + 1}</h1></span>
+            {!post.status ? "": <h1 className="float-left bg-green-800 inline w-4 h-4 md:w-5 md:h-5 absolute left-4 top-4 rounded-full text-center">&#10003;</h1>}
 
-  </main>
-  </div>
-      
+            <span className="basis-1/4"><h2>اسم البحث :         <div className="underline font-semibold decoration-solid inline">{post.research_name.toString()}</div></h2></span>  
+            
+            <span className="basis-1/4"><h2>تاريخ التحديد :     {post.research_dateOfappointed}</h2></span>  
+            <span className="basis-1/4"><h2>تاريخ التسليم  :    {post.research_deliveryDate}</h2></span>  
+            <span className="basis-1/4"><h2>اقل عدد للمجموعة :  {post.research_minimumNumberOfGroup}</h2></span>  
+            <span className="basis-1/4"><h2>اكبر عدد للمجموعة : {post.research_maximumNumberOfGroup}</h2></span>  
+            <span className="basis-1/4"><h2>تعليق : {post.research_comment}</h2></span>  
+
+          </div>
+          <div className="grid grid-rows-2 grid-flow-col rounded-b-md border border-t-0 ">
+            <button 
+            className='rounded-br-md bg-stone-400 inline row-span-3 box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-sm justify-center leading-[1em]  px-[12px] py-[10px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-base' 
+            value={post.research_id}  onClick={() => UpdateData(post.research_id, index)} data-id={index} disabled={isDisabled}>update</button>
+            <button 
+            className='rounded-bl-md bg-red-500 inline row-span-3 box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-sm justify-center leading-[1em]  px-[12px] py-[10px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-base' 
+            value={post.research_id} onClick={() => DeleteData(post.research_id, index)} data-id={index} disabled={isDisabled}>deleate</button>
+          </div> 
+          </div>
+            )
+          })}
+
+         </main>
+      </div>
     )
   }
 }else{
@@ -579,12 +574,13 @@ for (let j = 0; j < cLen; j++) {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] text-slate-100 text-base">
       <main className=" flex flex-col gap-8 row-start-2 items-center sm:items-start">
      {/* <h1 >لا يوجد عناصر</h1> */}
-    <a href="/adding"><button className='rounded-[8px] border shadow-lg shadow-[#000000] box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] ' onClick={() => {localStorage.setItem("department","3");localStorage.setItem("departmentStatus","true");window.location.reload() }}>اضافة عنصر +</button></a>
+    <Link href="/adding"><button className='rounded-[8px] border shadow-lg shadow-[#000000] box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] ' onClick={() => {localStorage.setItem("department","3");localStorage.setItem("departmentStatus","true");window.location.reload() }}>اضافة عنصر +</button></Link>
      {/* <h1 >{error}</h1> */}
        </main>
     </div>
   )
 }
+
 }
   
     }

@@ -266,21 +266,21 @@ await fetch("https://secend-pr.shuttleapp.rs/todos/corses",{
         <div className='flex flex-col flex-wrap'>
           {/* <a href={`/query/research/${post.corse_id}`} className="inline-flex items-center mb-3 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
            الابحاث    {post.count_r}</a>  */}
-          <a href={`/query/research/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4">
-           الابحاث    <div className='mx-8'>{post.count_r}</div></a> 
-           <a href={`/query/sheet/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4" 
-           > الشيتات <div className='mx-8'>{post.count_s}</div></a>
+          <Link href={`/query/research/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4">
+           الابحاث    <div className='mx-8'>{post.count_r}</div></Link> 
+           <Link href={`/query/sheet/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4" 
+           > الشيتات <div className='mx-8'>{post.count_s}</div></Link>
            {/* <a href={`/query/sheet/${post.corse_id}`} className="inline-flex items-center mb-3 flex-1 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
            > الشيتات {post.count_s}</a> */}
-          <a href={`/query/exam/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4" >
+          <Link href={`/query/exam/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4" >
           التكاليف <div className='mx-8'>{post.count_e}</div>
-        </a>
+        </Link>
           {/* <a href={`/query/exam/${post.corse_id}`} className="inline-flex items-center mb-3 flex-1 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
           التكاليف {post.count_e}
         </a> */}
-        <a href={`/query/quiz/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4">
+        <Link href={`/query/quiz/${post.corse_id}`} className="shadow-[#000000] border rounded-[8px] shadow-lg box-border text-[#FFFFFF] flex font-[Phantomsans,_sans-serif] text-[20px] justify-center leading-[1em] max-w-full min-w-[140px] px-[24px] py-[19px] no-underline select-none whitespace-nowrap cursor-pointer hover:outline-[0] md:text-[24px] md:min-w-[196px] w-full  my-4">
         quizes <div className='mx-8'>{post.count_q}</div>
-        </a>
+        </Link>
         </div>
         <hr></hr>
       
