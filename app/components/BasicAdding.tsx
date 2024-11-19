@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { Field, Form, Formik, useFormik } from "formik";
 // import { addingSchema, advancedSchema, basicSchema } from "../schemas";
 import Link from "next/link";
@@ -21,6 +21,7 @@ const onSubmit = async (values: any, actions: any) => {
   // console.log(values.username);
 
   let auth = localStorage.getItem("Authorization")
+
   if (auth != null){
   localStorage.setItem("departmentStatus","false")
 const fetchDataAu = async () => {
@@ -134,11 +135,18 @@ const BasicForm = () => {
   }
   const [photos, setPhotos] = useState([]);
   const [tokenstatus, setTokenStatus] = useState(false);
+  const [departm, setTDepartm] = useState("");
+  // let depart_id = localStorage.getItem("department");
+  // let depart_id = localStorage.getItem("department")
 
   // const [req_states, getStates] = useState<Number>();
 
   useEffect(() => {
+    let depart_id = localStorage.getItem("department")
+    if(depart_id != null){
 
+      setTDepartm(depart_id);
+    }
   if (typeof window !== 'undefined') {
     let auth = localStorage.getItem("Authorization")
       if (auth == null){
@@ -209,7 +217,7 @@ const BasicForm = () => {
   }, []);
   // toast("Wow so easy!");
   const corse_lest: Corse_lest[] =  photos;
-  const depart_id = localStorage.getItem("department")
+  
   // console.log(corse_lest.map(op => (op.corse_id)));
    const advancedSchema = yup.object().shape({
     subject: yup.string().min(4,"subject must be least 3 characters lonf").required("Required"),
@@ -261,12 +269,13 @@ const BasicForm = () => {
               <option value="manager">Product</option> */}
               <option value={""}>اختر المادة</option>
               {corse_lest.map(option => {
-                if(option.department == depart_id){
+                if(option.department == departm){
 
                   return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
-                }else{
-                  return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
                 }
+                // else{
+                //   return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
+                // }
                 // <option value={option.value}>{option.label}</option>
 })}
 

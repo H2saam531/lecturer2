@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { Form, Formik, useFormik } from "formik";
 import { advancedSchema, basicSchema } from "../schemas";
 import Link from "next/link";
