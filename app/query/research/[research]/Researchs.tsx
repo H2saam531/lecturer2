@@ -506,7 +506,7 @@ if(empathy != "empathy"){
         <div className="w-full  rounded-md h-14 border shadow-2xl text-center flex flex-row justify-right items-center">
           {/* <input type="checkbox" id="myCheck" className="checkbox" onChange={e => setChek(e.target.value)}/> */}
           {/* https://stackoverflow.com/questions/56356900/way-to-determine-checkbox-checked-in-react-usestate */}
-          <input type="checkbox" id="myCheck" className="checkbox my-auto text-center  mr-4" onClick={handleClick} checked={check}/>
+          <input type="checkbox" id="myCheck" className="checkbox my-auto text-center  mr-4" onClick={handleClick} checked={check} onChange={e => {}}/>
           <label className="text-center mx-auto mr-3" htmlFor="myCheck">اخفاء الابحاث المنتهية</label>
           {/* <input type="checkbox" id="myCheck2" className="checkbox my-auto text-center  mr-4" onClick={handleClick2} checked={check2}/>
           <label className="text-center mx-auto mr-3" htmlFor="myCheck2">ترتيب</label> */}
@@ -519,28 +519,13 @@ if(empathy != "empathy"){
             return d
           }
           }
-            // // return 'f' == "y" ? item : item.research_name.toLowerCase().includes("sd");
-            // let d = 2;
-            // const defaultDate = new Date().toLocaleDateString();
-
-            // if(item.research_deliveryDate > defaultDate){
-            //   // return item.research_name.toLowerCase().includes("n");
-            //   return item.research_deliveryDate;
-            // }
-            // return item.research_name.toLowerCase().includes("");
-            // item.filter(d => new Date(d) - new Date() > 0);
-          ) 
-          // .sort((a, b) => a.research_deliveryDate > b.research_deliveryDate ? 1 : -1)
-          // .sort(function(a, b){if(check2 == true){return b.valueOf() - a.valueOf()} else{return b.valueOf() - a.valueOf()}})
-          .map((post, index) => {
-
+          ) .map((post, index) => {
           return (
           // <div className="layer border rounded-md bg-cyan-500 shadow-lg shadow-cyan-500/50 px-9 py-8 w-full text-center" key={post.research_id}>
           <div className="layer relative flax flax-row rounded-md shadow-xl w-full " key={post.research_id}>
 
           
           <div className="layer border border-b-0 relative flax flax-row rounded-t-md px-9 w-full " >
-          {/* <div className="" key={post.research_id}>  */}
             <span className="text-right"><h1>#{index + 1}</h1></span>
             {!post.status ? "": <h1 className="float-left bg-green-800 inline w-4 h-4 md:w-5 md:h-5 absolute left-4 top-4 rounded-full text-center">&#10003;</h1>}
 

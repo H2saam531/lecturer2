@@ -519,7 +519,7 @@ return(
     <div className="w-full  rounded-md h-14 border shadow-2xl text-center flex flex-row justify-right items-center">
       {/* <input type="checkbox" id="myCheck" className="checkbox" onChange={e => setChek(e.target.value)}/> */}
       {/* https://stackoverflow.com/questions/56356900/way-to-determine-checkbox-checked-in-react-usestate */}
-      <input type="checkbox" id="myCheck" className="checkbox my-auto text-center  mr-4" onClick={handleClick} checked={check}/>
+      <input type="checkbox" id="myCheck" className="checkbox my-auto text-center  mr-4" onClick={handleClick} checked={check} onChange={e => {}}/>
       <label className="text-center mx-auto mr-3" htmlFor="myCheck">اخفاء الابحاث المنتهية</label>
       {/* <input type="checkbox" id="myCheck2" className="checkbox my-auto text-center  mr-4" onClick={handleClick2} checked={check2}/>
       <label className="text-center mx-auto mr-3" htmlFor="myCheck2">ترتيب</label> */}
