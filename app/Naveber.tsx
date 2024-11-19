@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 
 import Link from 'next/link';
-
+// import dynamic from 'next/dynamic';
+// const DynamicImage = dynamic(() => import('/logo.png'));
 interface Getname{
   name: string
   
@@ -111,7 +112,7 @@ const corse_lest: Getname[] = dataUser;
               <div className='flex items-center justify-between h-`6' >
                 <div className='flex items-ecnter'>
                     <div className='flex-shrink-0'>
-                        <Link href='/' className='text-white'> <Image className='w-16' src="../public/logo.png" alt="Next.js Logo" width={180} height={37} priority/> </Link>
+                        <Link href='/' className='text-white'> <Image className='w-16' src={"/logo.png"} alt="Next.js Logo" width={180} height={37} priority/> </Link>
                     </div>
                 </div>
                 <div className='hidden md:block '>

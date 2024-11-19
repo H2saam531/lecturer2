@@ -130,6 +130,7 @@ const BasicForm = () => {
     corse_id: string
     name: string;
     url: string;
+    department: string;
   }
   const [photos, setPhotos] = useState([]);
   const [tokenstatus, setTokenStatus] = useState(false);
@@ -208,6 +209,7 @@ const BasicForm = () => {
   }, []);
   // toast("Wow so easy!");
   const corse_lest: Corse_lest[] =  photos;
+  const depart_id = localStorage.getItem("department")
   // console.log(corse_lest.map(op => (op.corse_id)));
    const advancedSchema = yup.object().shape({
     subject: yup.string().min(4,"subject must be least 3 characters lonf").required("Required"),
@@ -258,10 +260,15 @@ const BasicForm = () => {
               <option value="designer">Designer</option>
               <option value="manager">Product</option> */}
               <option value={""}>اختر المادة</option>
-              {corse_lest.map(option => (
-                <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
+              {corse_lest.map(option => {
+                if(option.department == depart_id){
+
+                  return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
+                }else{
+                  return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
+                }
                 // <option value={option.value}>{option.label}</option>
-              ))}
+})}
 
             </CustomSelect>
             {/* <Field name="date" timezone={DefaultTz} component={DateTimeField} /> */}
