@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 import { loginSchema } from "../../schemas";
 import { Toaster, toast } from 'sonner';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-alice-carousel";
 // import  PreLoader  from "../../components/PreLoader";
 // import { createBrowserClient } from '@supabase/ssr'
 // import useNotesQuery from '@/hooks/useNotesQuery'
@@ -261,7 +262,7 @@ const [errorPasswrod, setMessagePass] = useState('');
             </div> */}
           </div>
           <div>
-              <a href="/accounts/create-account" className="text-indigo-800 font-semibold items-center text-alinge-center" >{ifYou}</a>
+              <Link href="/accounts/create-account" className="text-indigo-800 font-semibold items-center text-alinge-center" >{ifYou}</Link>
             </div>
           <div className="mt-5">
             <button className="button" disabled={isSubmitting} type="submit" >ادخل</button>
