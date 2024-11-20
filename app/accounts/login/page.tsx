@@ -15,7 +15,7 @@ import { useFormik } from "formik";
 import { loginSchema } from "../../schemas";
 import { Toaster, toast } from 'sonner';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-alice-carousel";
+import Link from 'next/link';
 // import  PreLoader  from "../../components/PreLoader";
 // import { createBrowserClient } from '@supabase/ssr'
 // import useNotesQuery from '@/hooks/useNotesQuery'

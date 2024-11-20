@@ -112,8 +112,8 @@ const corse_lest: Getname[] = dataUser;
               <div className='flex items-center justify-between h-`6' >
                 <div className='flex items-ecnter'>
                     <div className='flex-shrink-0'>
-                        <Link href='/' className='text-white'> <Image className='w-16' src={"../public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
-                        <img src="../public/logo.png" alt="..." />
+                        <Link href='/' className='text-white'> <Image className='w-16' src={"./public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
+                        <img src="./public/logo.png" alt="Logo2" />
                     </div>
                 </div>
                 <div className='hidden md:block '>
