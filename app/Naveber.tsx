@@ -113,7 +113,8 @@ const corse_lest: Getname[] = dataUser;
                 <div className='flex items-ecnter'>
                     <div className='flex-shrink-0'>
                         {/* <Link href='/' className='text-white'> <Image className='w-16' src={"/public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link> */}
-                        <Link href='/' className='text-white'> <Image className='w-16' src={"/images/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
+                        <Link href='/' className='text-white'> <Image className='w-16' src={"./images/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
+                        <Link href='/' className='text-white'> <Image className='w-16' src="./images/logo.png" alt="Logo" width={180} height={37} priority/> </Link>
                         {/* <img src="https://raw.githubusercontent.com/H2saam531/lecturer2/refs/heads/main/app/public/logo.png" alt="Logo2" /> */}
                     </div>
                 </div>
