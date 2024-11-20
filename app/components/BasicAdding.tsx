@@ -23,6 +23,7 @@ const onSubmit = async (values: any, actions: any) => {
   let auth = localStorage.getItem("Authorization")
 
   if (auth != null){
+
   localStorage.setItem("departmentStatus","false")
 const fetchDataAu = async () => {
 
@@ -35,7 +36,7 @@ const fetchDataAu = async () => {
       "research_idcf": parseInt(values.couseType),
       // "research_idcf": ,
       // "research_iduf": parseInt(values.couseType),
-      "research_iduf": 1,
+      "research_iduf": 0,
       "name": values.subject,
       "dateOfappointed": values.dateMin,
       "deliveryDate": values.dateMax,
@@ -124,7 +125,9 @@ if(auth != null){
 
 }
 };
-
+interface Data_user{
+  depart: string
+}
 const BasicForm = () => {
   
   interface Corse_lest{
@@ -133,22 +136,25 @@ const BasicForm = () => {
     url: string;
     department: string;
   }
+ 
   const [photos, setPhotos] = useState([]);
   const [tokenstatus, setTokenStatus] = useState(false);
   const [departm, setTDepartm] = useState("");
+const [dataUser, setDataUser] = useState([]);
+
   // let depart_id = localStorage.getItem("department");
   // let depart_id = localStorage.getItem("department")
 
   // const [req_states, getStates] = useState<Number>();
 
   useEffect(() => {
-    let depart_id = localStorage.getItem("department")
-    if(depart_id != null){
+    // let depart_id = localStorage.getItem("department")
+    // if(depart_id != null){
 
-      setTDepartm(depart_id);
-    }
-  if (typeof window !== 'undefined') {
+    //   setTDepartm(depart_id);
+    // }
     let auth = localStorage.getItem("Authorization")
+  if (typeof window !== 'undefined') {
       if (auth == null){
         fetch(`${url}/corses`,{
           method: "GET",
@@ -213,10 +219,46 @@ const BasicForm = () => {
       }
     }
     } 
+    if(auth != null){
+      const fatching = async () => {
+        const reqponse = fetch(`${url}/user/userData`,{
+          method: "GET",
+    credentials: "same-origin",
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': auth
+    },
+        })  .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          // console.log(data);
+          // if(data == 200){
+          //   // localStorage.setItem("Authorization",data.token);
+          //     // router.push('/react')
+          //     console.log(data);
+      
+      
+          // }
+          setDataUser(data);
+          return data
+        }).catch((error) => {
+          console.log(error)
+        });
+      }
+      fatching();
+    }
     
   }, []);
   // toast("Wow so easy!");
   const corse_lest: Corse_lest[] =  photos;
+  const depart: Data_user[] = dataUser;
+  // if (depart.length != 0){
+
+  //   let depart2 = depart[0].depart;
+  // }
+  // console.log(dataUser);
+
   
   // console.log(corse_lest.map(op => (op.corse_id)));
    const advancedSchema = yup.object().shape({
@@ -269,10 +311,13 @@ const BasicForm = () => {
               <option value="manager">Product</option> */}
               <option value={""}>اختر المادة</option>
               {corse_lest.map(option => {
-                if(option.department == departm){
+                // if(option.department == depart.map((post) => post.depart)){
+                if(depart.length != 0){
+                if(option.department == depart[0].depart){
 
                   return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
                 }
+              }
                 // else{
                 //   return <option value={option.corse_id} key={option.corse_id}>{option.name}</option>
                 // }

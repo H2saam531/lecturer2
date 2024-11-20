@@ -66,7 +66,8 @@ const url = "https://secend-pr.shuttleapp.rs/todos";
       if(data == 200){
         // localStorage.setItem("Authorization",data.token);
         // funRout();
-        setChek2(true);
+        // setChek2(true);
+        router.push('/')
          
   
   

@@ -112,16 +112,18 @@ const corse_lest: Getname[] = dataUser;
               <div className='flex items-center justify-between h-`6' >
                 <div className='flex items-ecnter'>
                     <div className='flex-shrink-0'>
-                        <Link href='/' className='text-white'> <Image className='w-16' src={"./public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
-                        <img src="./public/logo.png" alt="Logo2" />
+                        {/* <Link href='/' className='text-white'> <Image className='w-16' src={"/public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link> */}
+                        <Link href='/' className='text-white'> <Image className='w-16' src={"/images/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
+                        {/* <img src="https://raw.githubusercontent.com/H2saam531/lecturer2/refs/heads/main/app/public/logo.png" alt="Logo2" /> */}
                     </div>
                 </div>
                 <div className='hidden md:block '>
                     <div className='ml-4 flex items-center space-x-4 '>
         {/* className={errors.dateStart && touched.dateStart ? "input-error" : "text-sm w-screen" } */}
 
-                        <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</Link>
+                        <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>ِAdd</Link>
                         <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</Link>
+                        <Link href='/lecturers' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>دروس</Link>
                         <Link href='' className={reqpo != 200 ? "invisible" :'text-white hover:bg-white hover:text-black rounded-lg p-2'}>{corse_lest.map((post) => post.name)}</Link>
                         <Link href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</Link>
                         <button className={reqpo != 200 ? "invisible" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '} 
@@ -226,6 +228,7 @@ const corse_lest: Getname[] = dataUser;
 
           <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</Link>
           <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</Link>
+          <Link href='/lecturers' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>دروس</Link>
           <Link href='/accounts/login' className={reqpo == 200 ? "invisible hidden" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}>login</Link>
           <button className={reqpo != 200 ? "invisible" : 'text-white hover:bg-white hover:text-black rounded-lg p-2 '}
            onClick={() => {setIsDisabled(true);setTimeout(() => {localStorage.removeItem("departmentStatus"); localStorage.removeItem("Authorization");window.location.reload(); setIsDisabled(false);},2000); }} disabled={isDisabled}>logout</button>
