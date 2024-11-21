@@ -113,9 +113,9 @@ const corse_lest: Getname[] = dataUser;
                 <div className='flex items-ecnter'>
                     <div className='flex-shrink-0'>
                         {/* <Link href='/' className='text-white'> <Image className='w-16' src={"/public/logo.png"} alt="Logo" width={180} height={37} priority/> </Link> */}
-                        <Link href='/' className='text-white'> <Image className='w-16' src={"./images/logo.png"} alt="Logo" width={180} height={37} priority/> </Link>
-                        <Link href='/' className='text-white'> <Image className='w-16' src="logo.png" alt="Logo" width={180} height={37} priority/> </Link>
-                        <Link href='/' className='text-white'> <img className='w-16' src="./images/logo.png" alt="Logo" width={180} height={37} /> </Link>
+                        {/* <Link href='/' className='text-white'> <Image className='w-16' src={"./images/logo.png"} alt="Logo" width={180} height={37} priority/> </Link> */}
+                        <Link href='/' className='text-white'> <Image className='w-16' src="/logo.png" alt="Logo" width={180} height={37} priority/> </Link>
+                        {/* <Link href='/' className='text-white'> <img className='w-16' src="./images/logo.png" alt="Logo" width={180} height={37} /> </Link> */}
                         {/* <img src="https://raw.githubusercontent.com/H2saam531/lecturer2/refs/heads/main/app/public/logo.png" alt="Logo2" /> */}
                     </div>
                 </div>
@@ -195,7 +195,7 @@ const corse_lest: Getname[] = dataUser;
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen   gap-16  font-[family-name:var(--font-geist-sans)]">
           <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white float-left"
+          {/* <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white float-left"
             onClick={toogleNavbar}
           >{isClick ? (
             <svg 
@@ -226,7 +226,7 @@ const corse_lest: Getname[] = dataUser;
             />
           </svg>
 
-          )}</button>
+          )}</button> */}
 
           <Link href='/adding' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Add</Link>
           <Link href='/Events' className='text-white hover:bg-white hover:text-black rounded-lg p-2'>Event</Link>
